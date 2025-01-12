@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_badges",
+  "info": {
+    "displayName": "Badge",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "hex_color": {
+      "type": "string"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "time_limit"
+      ]
+    }
+  }
+}

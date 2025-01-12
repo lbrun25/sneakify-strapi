@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_tags",
+  "info": {
+    "displayName": "Tag"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "icon_name_mui": {
+      "type": "string"
+    }
+  }
+}

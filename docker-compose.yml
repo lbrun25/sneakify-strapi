@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:8.0         # Specify the MySQL version
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: mysql
+      MYSQL_DATABASE: my_database          # Default database
+      MYSQL_USER: user                     # Default user
+      MYSQL_PASSWORD: userpassword         # Password for the user
+    ports:
+      - "3306:3306"    # Map MySQL port to localhost
+    volumes:
+      - db_data:/var/lib/mysql   # Persist database data
+    command: --default-authentication-plugin=mysql_native_password # Ensure compatibility with older clients
+
+volumes:
+  db_data:

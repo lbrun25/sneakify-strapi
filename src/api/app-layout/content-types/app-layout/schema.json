@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "app_layouts",
+  "info": {
+    "singularName": "app-layout",
+    "pluralName": "app-layouts",
+    "displayName": "App Layout"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.footer"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.header"
+    }
+  }
+}

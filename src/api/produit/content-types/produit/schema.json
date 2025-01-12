@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produits",
+  "info": {
+    "singularName": "produit",
+    "pluralName": "produits",
+    "displayName": "Produit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "old_id": {
+      "type": "string",
+      "unique": true
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "guide": {
+      "type": "text"
+    },
+    "new_name": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "discount_price": {
+      "type": "decimal"
+    },
+    "discount_expiry": {
+      "type": "datetime"
+    },
+    "best_size": {
+      "type": "string"
+    },
+    "hold_or_sell": {
+      "type": "string"
+    },
+    "is_resellable": {
+      "type": "boolean"
+    },
+    "resell": {
+      "type": "boolean"
+    },
+    "retail": {
+      "type": "decimal"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "resell_price": {
+      "type": "decimal"
+    },
+    "retail_price": {
+      "type": "decimal"
+    },
+    "place": {
+      "type": "string"
+    },
+    "taille": {
+      "type": "string"
+    },
+    "titre": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
+    },
+    "dislikes": {
+      "type": "integer",
+      "default": 0
+    },
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.badge"
+    },
+    "suggestions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produit.produit"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.tag"
+    },
+    "avis_sneakify": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.avis"
+    }
+  }
+}

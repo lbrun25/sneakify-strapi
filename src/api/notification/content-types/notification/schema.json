@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "target_url": {
+      "type": "string"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "sent",
+        "failed"
+      ]
+    },
+    "sent_at": {
+      "type": "datetime"
+    },
+    "onesignal_id": {
+      "type": "string"
+    },
+    "is_sent": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
