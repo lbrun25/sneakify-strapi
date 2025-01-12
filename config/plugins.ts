@@ -29,7 +29,7 @@ export default ({ env }) => ({
             characterLimit: 500,
             keys: [
               {
-                name: "title",
+                name: "name",
                 weight: 0.2,
               },
               {

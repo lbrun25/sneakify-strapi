@@ -41,25 +41,6 @@ if (!API_TOKEN) {
   process.exit(1);
 }
 
-async function fetchExistingProduit(old_id: string): Promise<number | null> {
-  try {
-    const response = await axios.get(`${API_URL}?filters[old_id][$eq]=${old_id}`, {
-      headers: {
-        Authorization: `Bearer ${API_TOKEN}`,
-      },
-    });
-
-    if (response.data.data.length > 0) {
-      return response.data.data[0].id; // Return the ID of the existing item
-    }
-    return null;
-  } catch (error) {
-    console.error(`Error fetching produit with old_id: ${old_id}`);
-    console.error(error.message);
-    return null;
-  }
-}
-
 async function importProduits() {
   const produits: Produit[] = [];
 
@@ -105,37 +86,19 @@ async function importProduits() {
   // Post data to Strapi
   for (const produit of produits) {
     try {
-      const existingId = await fetchExistingProduit(produit.old_id);
-
-      if (existingId) {
-        // Update the existing produit
-        await axios.put(
-          `${API_URL}/${existingId}`,
-          {
-            data: produit,
+      // Create a new produit
+      await axios.post(
+        API_URL,
+        {
+          data: produit,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${API_TOKEN}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${API_TOKEN}`,
-            },
-          }
-        );
-        console.log(`Produit mis à jour : ${produit.name}`);
-      } else {
-        // Create a new produit
-        await axios.post(
-          API_URL,
-          {
-            data: produit,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${API_TOKEN}`,
-            },
-          }
-        );
-        console.log(`Produit importé : ${produit.name}`);
-      }
+        }
+      );
+      console.log(`Produit importé : ${produit.name}`);
     } catch (error) {
       console.error(`Erreur lors de l'import de : ${produit.name}`);
 
