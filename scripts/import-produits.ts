@@ -8,7 +8,7 @@ interface Produit {
   old_id: string;
   date: string;
   guide: string;
-  new_name: string;
+  name: string;
   order: number;
   price: number | null;
   discount_price: number | null;
@@ -59,7 +59,7 @@ async function importProduits() {
       old_id: row.id,
       date: row.date,
       guide: row.guide || "",
-      new_name: row.newName || "",
+      name: row.newName || "",
       order: parseInt(row.order, 10) || 0,
       price: parseFloat(row.price) || null,
       discount_price: parseFloat(row.discount_price) || null,
@@ -97,9 +97,9 @@ async function importProduits() {
           },
         }
       );
-      console.log(`Produit importé : ${produit.new_name}`);
+      console.log(`Produit importé : ${produit.name}`);
     } catch (error) {
-      console.error(`Erreur lors de l'import de : ${produit.new_name}`);
+      console.error(`Erreur lors de l'import de : ${produit.name}`);
 
       if (error.response) {
         console.error("Status:", error.response.status);
