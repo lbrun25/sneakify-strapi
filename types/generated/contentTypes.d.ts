@@ -503,7 +503,7 @@ export interface ApiProduitProduit extends Struct.CollectionTypeSchema {
       'api::produit.produit'
     > &
       Schema.Attribute.Private;
-    new_name: Schema.Attribute.String;
+    name: Schema.Attribute.String;
     old_id: Schema.Attribute.String & Schema.Attribute.Unique;
     order: Schema.Attribute.Integer;
     picture: Schema.Attribute.Media<'images'>;

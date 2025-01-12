@@ -21,7 +21,7 @@
     "guide": {
       "type": "text"
     },
-    "new_name": {
+    "name": {
       "type": "string"
     },
     "order": {
