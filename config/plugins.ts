@@ -21,7 +21,8 @@ export default ({ env }) => ({
   "fuzzy-search": {
     enabled: true,
     config: {
-	{  
+      contentTypes: [
+        {
           uid: "api::produit.produit",
           modelName: "produit",
           fuzzysortOptions: {
