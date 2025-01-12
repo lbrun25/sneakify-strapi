@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiAppLayoutAppLayout extends Struct.SingleTypeSchema {
   collectionName: 'app_layouts';
   info: {
+    description: '';
     displayName: 'App Layout';
     pluralName: 'app-layouts';
     singularName: 'app-layout';
@@ -383,8 +384,13 @@ export interface ApiAppLayoutAppLayout extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    footer: Schema.Attribute.Component<'shared.footer', false>;
-    header: Schema.Attribute.Component<'shared.header', false>;
+    footer_cover: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    header_banners: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

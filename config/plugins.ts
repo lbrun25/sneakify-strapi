@@ -18,4 +18,27 @@ export default ({ env }) => ({
       },
     },
   },
+  "fuzzy-search": {
+    enabled: true,
+    config: {
+	{  
+          uid: "api::produit.produit",
+          modelName: "produit",
+          fuzzysortOptions: {
+            characterLimit: 500,
+            keys: [
+              {
+                name: "title",
+                weight: 0.2,
+              },
+              {
+                name: "description",
+                weight: -0.2,
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
 });

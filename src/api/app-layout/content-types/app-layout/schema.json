@@ -4,22 +4,33 @@
   "info": {
     "singularName": "app-layout",
     "pluralName": "app-layouts",
-    "displayName": "App Layout"
+    "displayName": "App Layout",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "footer": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.footer"
+    "footer_cover": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     },
-    "header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.header"
+    "header_banners": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
