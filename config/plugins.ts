@@ -26,6 +26,7 @@ export default ({ env }) => ({
           uid: "api::produit.produit",
           modelName: "produit",
           fuzzysortOptions: {
+            limit: 10,
             characterLimit: 500,
             keys: [
               {
