@@ -3,11 +3,13 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface SharedAvis extends Struct.ComponentSchema {
   collectionName: 'components_shared_avis';
   info: {
+    description: '';
     displayName: 'Avis';
   };
   attributes: {
+    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     description: Schema.Attribute.Text;
-    membre: Schema.Attribute.Component<'shared.member', false>;
+    member_name: Schema.Attribute.String;
   };
 }
 
@@ -39,10 +41,12 @@ export interface SharedButton extends Struct.ComponentSchema {
 export interface SharedFooter extends Struct.ComponentSchema {
   collectionName: 'components_shared_footers';
   info: {
+    description: '';
     displayName: 'Footer';
   };
   attributes: {
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -50,25 +54,11 @@ export interface SharedHeader extends Struct.ComponentSchema {
   collectionName: 'components_shared_headers';
   info: {
     description: '';
-    displayName: 'Header';
+    displayName: 'Banner';
   };
   attributes: {
-    banners: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-  };
-}
-
-export interface SharedMember extends Struct.ComponentSchema {
-  collectionName: 'components_shared_members';
-  info: {
-    description: '';
-    displayName: 'Membre';
-  };
-  attributes: {
-    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    name: Schema.Attribute.String;
+    picture: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    url: Schema.Attribute.String;
   };
 }
 
@@ -77,6 +67,29 @@ export interface SharedProduit extends Struct.ComponentSchema {
   info: {
     displayName: 'Produit';
     icon: '';
+  };
+  attributes: {
+    ordre: Schema.Attribute.Integer;
+    produit: Schema.Attribute.Relation<'oneToOne', 'api::produit.produit'>;
+  };
+}
+
+export interface SharedPub extends Struct.ComponentSchema {
+  collectionName: 'components_shared_pubs';
+  info: {
+    displayName: 'Pub';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    ordre: Schema.Attribute.Integer;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface SharedSuggestion extends Struct.ComponentSchema {
+  collectionName: 'components_shared_suggestions';
+  info: {
+    displayName: 'suggestion';
   };
   attributes: {
     ordre: Schema.Attribute.Integer;
@@ -103,8 +116,9 @@ declare module '@strapi/strapi' {
       'shared.button': SharedButton;
       'shared.footer': SharedFooter;
       'shared.header': SharedHeader;
-      'shared.member': SharedMember;
       'shared.produit': SharedProduit;
+      'shared.pub': SharedPub;
+      'shared.suggestion': SharedSuggestion;
       'shared.tag': SharedTag;
     }
   }

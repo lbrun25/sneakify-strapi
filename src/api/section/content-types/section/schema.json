@@ -38,8 +38,9 @@
     },
     "produits": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::produit.produit"
+      "relation": "manyToMany",
+      "target": "api::produit.produit",
+      "mappedBy": "sections"
     },
     "style": {
       "type": "enumeration",
@@ -64,15 +65,69 @@
     "sous_titre": {
       "type": "string"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::categorie.categorie"
-    },
     "top_produits": {
       "type": "component",
       "repeatable": true,
       "component": "shared.produit"
+    },
+    "background_color": {
+      "type": "enumeration",
+      "enum": [
+        "blanc",
+        "gris"
+      ]
+    },
+    "carousel_item_taille": {
+      "type": "enumeration",
+      "enum": [
+        "petit",
+        "moyen",
+        "grand"
+      ]
+    },
+    "afficher_prix": {
+      "type": "boolean"
+    },
+    "carousel_item_style": {
+      "type": "enumeration",
+      "enum": [
+        "carte",
+        "sans_carte"
+      ]
+    },
+    "carousel_orientation": {
+      "type": "enumeration",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "categories_selection": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categorie.categorie",
+      "inversedBy": "sections"
+    },
+    "selection_banniere": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "pubs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.pub"
+    },
+    "image_dernier_item_selection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.header"
     }
   }
 }

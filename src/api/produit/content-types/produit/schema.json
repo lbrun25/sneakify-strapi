@@ -41,7 +41,7 @@
     "discount_price": {
       "type": "decimal"
     },
-    "discount_expiry": {
+    "expiration_date": {
       "type": "datetime"
     },
     "best_size": {
@@ -93,11 +93,6 @@
       "repeatable": false,
       "component": "shared.badge"
     },
-    "suggestions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::produit.produit"
-    },
     "tags": {
       "type": "component",
       "repeatable": true,
@@ -107,6 +102,26 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.avis"
+    },
+    "buy_url": {
+      "type": "string"
+    },
+    "suggestions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.suggestion"
+    },
+    "sections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::section.section",
+      "inversedBy": "produits"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categorie.categorie",
+      "inversedBy": "produits"
     }
   }
 }

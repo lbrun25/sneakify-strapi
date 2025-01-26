@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_suggestions",
+  "info": {
+    "displayName": "suggestion"
+  },
+  "options": {},
+  "attributes": {
+    "ordre": {
+      "type": "integer"
+    },
+    "produit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::produit.produit"
+    }
+  }
+}

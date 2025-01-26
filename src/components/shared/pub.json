@@ -1,15 +1,11 @@
 {
-  "collectionName": "components_shared_members",
+  "collectionName": "components_shared_pubs",
   "info": {
-    "displayName": "Membre",
-    "description": ""
+    "displayName": "Pub"
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
-    "avatar": {
+    "image": {
       "allowedTypes": [
         "images",
         "files",
@@ -18,6 +14,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "ordre": {
+      "type": "integer"
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

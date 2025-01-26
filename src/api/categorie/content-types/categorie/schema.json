@@ -16,14 +16,32 @@
       "type": "string"
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "produits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::produit.produit",
+      "mappedBy": "categories"
+    },
+    "pubs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.pub"
+    },
+    "sections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::section.section",
+      "mappedBy": "categories_selection"
     }
   }
 }

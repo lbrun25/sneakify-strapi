@@ -56,6 +56,9 @@ async function sendNotification(notification: Notification) {
     throw new Error("OneSignal credentials are not properly configured in the environment variables.");
   }
 
+    console.log("app_id:", appId)
+  console.log("apiKey:", apiKey)
+
   const data: any = {
     app_id: appId,
     contents: { en: notification.message },

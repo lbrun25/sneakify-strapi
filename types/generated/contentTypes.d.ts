@@ -381,16 +381,15 @@ export interface ApiAppLayoutAppLayout extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    banners: Schema.Attribute.Component<'shared.header', true>;
+    categories_vue_promotions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categorie.categorie'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    footer_cover: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    header_banners: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    footer: Schema.Attribute.Component<'shared.footer', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -398,6 +397,8 @@ export interface ApiAppLayoutAppLayout extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    pubs_toutes_les_x_lignes: Schema.Attribute.Integer;
+    pubs_vue_recherche: Schema.Attribute.Component<'shared.pub', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -427,7 +428,10 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     picture: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    produits: Schema.Attribute.Relation<'manyToMany', 'api::produit.produit'>;
     publishedAt: Schema.Attribute.DateTime;
+    pubs: Schema.Attribute.Component<'shared.pub', true>;
+    sections: Schema.Attribute.Relation<'manyToMany', 'api::section.section'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -485,14 +489,19 @@ export interface ApiProduitProduit extends Struct.CollectionTypeSchema {
     avis_sneakify: Schema.Attribute.Component<'shared.avis', false>;
     badge: Schema.Attribute.Component<'shared.badge', false>;
     best_size: Schema.Attribute.String;
+    buy_url: Schema.Attribute.String;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::categorie.categorie'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.DateTime;
     description: Schema.Attribute.Text;
-    discount_expiry: Schema.Attribute.DateTime;
     discount_price: Schema.Attribute.Decimal;
     dislikes: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    expiration_date: Schema.Attribute.DateTime;
     guide: Schema.Attribute.Text;
     hold_or_sell: Schema.Attribute.String;
     is_resellable: Schema.Attribute.Boolean;
@@ -514,8 +523,9 @@ export interface ApiProduitProduit extends Struct.CollectionTypeSchema {
     resell_price: Schema.Attribute.Decimal;
     retail: Schema.Attribute.Decimal;
     retail_price: Schema.Attribute.Decimal;
+    sections: Schema.Attribute.Relation<'manyToMany', 'api::section.section'>;
     sku: Schema.Attribute.String;
-    suggestions: Schema.Attribute.Relation<'oneToMany', 'api::produit.produit'>;
+    suggestions: Schema.Attribute.Component<'shared.suggestion', true>;
     tags: Schema.Attribute.Component<'shared.tag', true>;
     taille: Schema.Attribute.String;
     titre: Schema.Attribute.String;
@@ -537,9 +547,18 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    afficher_prix: Schema.Attribute.Boolean;
     avatar: Schema.Attribute.Media<'images'>;
-    categories: Schema.Attribute.Relation<
-      'oneToMany',
+    background_color: Schema.Attribute.Enumeration<['blanc', 'gris']>;
+    carousel_item_style: Schema.Attribute.Enumeration<['carte', 'sans_carte']>;
+    carousel_item_taille: Schema.Attribute.Enumeration<
+      ['petit', 'moyen', 'grand']
+    >;
+    carousel_orientation: Schema.Attribute.Enumeration<
+      ['horizontal', 'vertical']
+    >;
+    categories_selection: Schema.Attribute.Relation<
+      'manyToMany',
       'api::categorie.categorie'
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -547,6 +566,10 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     enfants: Schema.Attribute.Relation<'oneToMany', 'api::section.section'>;
+    image_dernier_item_selection: Schema.Attribute.Component<
+      'shared.header',
+      false
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -556,8 +579,12 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
     nom: Schema.Attribute.String;
     ordre: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     parent: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
-    produits: Schema.Attribute.Relation<'oneToMany', 'api::produit.produit'>;
+    produits: Schema.Attribute.Relation<'manyToMany', 'api::produit.produit'>;
     publishedAt: Schema.Attribute.DateTime;
+    pubs: Schema.Attribute.Component<'shared.pub', true>;
+    selection_banniere: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     sous_titre: Schema.Attribute.String;
     style: Schema.Attribute.Enumeration<['selection', 'simple']> &
       Schema.Attribute.Required &

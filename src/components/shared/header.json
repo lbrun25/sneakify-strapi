@@ -1,14 +1,14 @@
 {
   "collectionName": "components_shared_headers",
   "info": {
-    "displayName": "Header",
+    "displayName": "Banner",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "banners": {
+    "picture": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
@@ -16,6 +16,9 @@
         "videos",
         "audios"
       ]
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

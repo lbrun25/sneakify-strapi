@@ -1,18 +1,26 @@
 {
   "collectionName": "components_shared_avis",
   "info": {
-    "displayName": "Avis"
+    "displayName": "Avis",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "description": {
       "type": "text"
     },
-    "membre": {
-      "displayName": "Member",
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.member"
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "member_name": {
+      "type": "string"
     }
   }
 }

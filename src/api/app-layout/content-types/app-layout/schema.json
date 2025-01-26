@@ -12,25 +12,28 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "footer_cover": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "banners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.header"
     },
-    "header_banners": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.footer"
+    },
+    "pubs_vue_recherche": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.pub"
+    },
+    "pubs_toutes_les_x_lignes": {
+      "type": "integer"
+    },
+    "categories_vue_promotions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categorie.categorie"
     }
   }
 }
