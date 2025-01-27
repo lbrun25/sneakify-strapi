@@ -52,6 +52,9 @@ async function sendNotification(notification: Notification) {
   const appId = process.env.ONESIGNAL_APP_ID; // Read from environment variables
   const apiKey = process.env.ONESIGNAL_API_KEY; // Read from environment variables
 
+  console.log("app_id:", appId)
+  console.log("apiKey:", apiKey)
+
   if (!appId || !apiKey) {
     throw new Error("OneSignal credentials are not properly configured in the environment variables.");
   }
