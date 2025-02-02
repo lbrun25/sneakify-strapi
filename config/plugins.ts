@@ -33,6 +33,10 @@ export default ({ env }) => ({
                 name: "name",
                 weight: 0.1,
               },
+              {
+                name: "description",
+                weight: -0.1,
+              },
             ],
           },
         },
